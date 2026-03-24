@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 
 const app = express();
 
 app.use(express.json());
 
-const challengeRoutes = require("./routes/challengeRoutes");
+import challengeRoutes from "./routes/challengeRoutes.js";
 
 app.use("/challenges", challengeRoutes)
 

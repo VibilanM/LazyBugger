@@ -1,12 +1,14 @@
-const getAllChallenges = (req, res) => {
-    res.json({message: "All Challenges."});
+import client from "../db/supabase.js"
+
+const getAllChallenges = async (req, res) => {
+    const { data, error } = await client
+        .from('challenges')
+        .select('*');
+    res.send(data);
 }
 
 const postChallenge = (req, res) => {
-    res.json({message: "Challenge Created."});
+    res.send({ message: "Challenge Created." });
 }
 
-module.exports = {
-    getAllChallenges,
-    postChallenge
-}
+export { getAllChallenges, postChallenge };
