@@ -7,6 +7,15 @@ const getAllChallenges = async (req, res) => {
     res.send(data);
 }
 
+const getChallengeById = async (req, res) => {
+    const id = req.params.id;
+    const { data, error } = await client
+        .from('challenges')
+        .select('*')
+        .eq('id', id);
+    res.send(data);
+}
+
 const postChallenge = async (req, res) => {
 
     const { title, description, is_public, deadline } = req.body;
@@ -24,4 +33,4 @@ const postChallenge = async (req, res) => {
     res.send({ message: "Challenge Created." });
 }
 
-export { getAllChallenges, postChallenge };
+export { getAllChallenges, getChallengeById, postChallenge };
