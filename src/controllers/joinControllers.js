@@ -19,4 +19,21 @@ const joinChallenge = async (req, res) => {
     res.send(data);
 };
 
-export { joinChallenge };
+const leaveChallenge = async (req, res) => {
+    const challenge_id = req.params.id;
+
+    const { data, error } = await client
+        .from('participations')
+        .delete()
+        .eq("user_id", req.user.id)
+        .eq("challenge_id", challenge_id)
+        .select();
+
+    if (error) {
+        return res.status(400).send({ error });
+    }
+
+    res.send({ message: "Left challenge successfully" });
+}
+
+export { joinChallenge, leaveChallenge };
