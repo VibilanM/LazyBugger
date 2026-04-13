@@ -33,4 +33,19 @@ const postChallenge = async (req, res) => {
     res.send({ message: "Challenge Created." });
 }
 
-export { getAllChallenges, getChallengeById, postChallenge };
+const getParticipants = async (req, res) => {
+    const challenge_id = req.params.id;
+
+    const { data, error } = await client
+        .from('participations')
+        .select('*')
+        .eq("challenge_id", challenge_id);
+
+    if (error) {
+        return res.status(400).send({ error });
+    }
+
+    res.send(data);
+}
+
+export { getAllChallenges, getChallengeById, postChallenge, getParticipants };
