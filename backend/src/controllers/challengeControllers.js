@@ -66,7 +66,6 @@ const getMyChallenges = async (req, res) => {
         return res.status(400).send({ error });
     }
     
-    console.log(data);
     res.send(data);
 }
 
