@@ -48,4 +48,32 @@ const getParticipants = async (req, res) => {
     res.send(data);
 }
 
-export { getAllChallenges, getChallengeById, postChallenge, getParticipants };
+const getMyChallenges = async (req, res) => {
+    const { data, error } = await client
+        .from('participations')
+        .select(`
+            status,
+            challenges(
+                id,
+                title,
+                description,
+                deadline
+            )
+        `)
+        .eq("user_id", req.user.id);
+
+    if (error) {
+        return res.status(400).send({ error });
+    }
+    
+    console.log(data);
+    res.send(data);
+}
+
+export {
+    getAllChallenges,
+    getChallengeById,
+    postChallenge,
+    getParticipants,
+    getMyChallenges
+};
