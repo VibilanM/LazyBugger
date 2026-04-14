@@ -1,5 +1,5 @@
 import express from "express";
-import authMiddleware from "../middleware/auth.js";
+import { authMiddleware } from "../middleware/auth.js";
 import { getAllChallenges, getChallengeById, postChallenge, getParticipants, getMyChallenges } from "../controllers/challengeControllers.js"
 import { joinChallenge, leaveChallenge } from "../controllers/joinControllers.js";
 

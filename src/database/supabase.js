@@ -5,7 +5,10 @@ dotenv.config();
 
 const supabaseURL = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_API_KEY;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const client = createClient(supabaseURL, supabaseKey);
 
-export default client;
+const adminClient = createClient(supabaseURL, supabaseServiceRoleKey);
+
+export { client, adminClient };

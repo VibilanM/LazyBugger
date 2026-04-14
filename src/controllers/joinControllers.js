@@ -1,4 +1,4 @@
-import client from "../database/supabase.js";
+import { client } from "../database/supabase.js";
 
 const joinChallenge = async (req, res) => {
     const challenge_id = req.params.id;

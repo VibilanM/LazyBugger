@@ -1,4 +1,4 @@
-import client from "../database/supabase.js"
+import { client } from "../database/supabase.js"
 
 const getAllChallenges = async (req, res) => {
     const { data, error } = await client
